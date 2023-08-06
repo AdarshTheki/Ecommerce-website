@@ -11,3 +11,17 @@ export const delItem = (product) => {
     payload: product,
   };
 };
+
+export const minusItem = (product) => {
+  return {
+    type: "MINUSITEM",
+    payload: product,
+  };
+};
+
+export const plusItem = (product) => {
+  return {
+    type: "PLUSITEM",
+    payload: product,
+  };
+};
