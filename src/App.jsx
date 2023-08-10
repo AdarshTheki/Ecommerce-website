@@ -1,18 +1,28 @@
 import { Routes, Route } from "react-router-dom";
-import Home from "./Components/Home";
-import About from "./Components/About";
-import Contact from "./Components/Contact";
-import LogIn from "./Components/LogIn";
+import Home from "./Components/Common/Home";
+import About from "./Components/Common/About";
+import Contact from "./Components/Common/Contact";
+import LogIn from "./Components/Common/LogIn";
+import SignUp from "./Components/Common/SignUp";
+import Footer from "./Components/Common/Footer";
+import NotFound from "./Components/Common/NotFound";
+
 import Header from "./Components/Header";
 import Products from "./Components/Products";
 import ProductDetail from "./Components/ProductDetail";
 import Cart from "./Components/Cart";
 import Checkout from "./Components/Checkout";
-import SignUp from "./Components/SignUp";
-import Footer from "./Components/Footer";
-import NotFound from "./Components/NotFound";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { fetchProducts } from "./redux/productSlice";
+
 
 const App = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchProducts());
+  }, [dispatch]);
+  
   return (
     <>
       <Header />
