@@ -1,5 +1,5 @@
-import bg from "../assets/bg.avif";
-import Product from "./Products";
+import { NavLink } from "react-router-dom";
+import bg from "../../assets/bg.avif";
 
 const Home = () => {
   return (
@@ -12,10 +12,11 @@ const Home = () => {
               NEW SECTION ARRIVALS
             </h5>
             <p className='card-text lead fs-2'>CHECK OUT ALL THE THREADS</p>
+            <p className="w-50 fw-medium text-black-50">Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto, minima. Rerum quaerat, ex laudantium porro dolorem cum id laborum soluta distinctio ducimus. Necessitatibus dicta, ipsam eos voluptatum maxime accusantium excepturi?</p>
+            <NavLink to="products" className="btn btn-outline-dark">Go to Product</NavLink>
           </div>
         </div>
       </div>
-      <Product />
     </div>
   );
 };

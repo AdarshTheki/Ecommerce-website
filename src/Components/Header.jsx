@@ -2,13 +2,13 @@ import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 
 const Header = () => { 
-  const state = useSelector((state) => state.addItem)
+  const state = useSelector((state) => state.cart)
   return (
     <div className='NavBar'>
       <nav className='navbar navbar-expand-lg bg-body-tertiary bg-white py-3 shadow-sm '>
         <div className='container'>
-          <NavLink className='navbar-brand fw-bold fs-4' to='/'>
-            Your Collections
+          <NavLink className='navbar-brand fw-bold fs-5' to='/products'>
+            Collections
           </NavLink>
           <button
             className='navbar-toggler'

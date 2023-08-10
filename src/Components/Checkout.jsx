@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useSelector } from "react-redux";
 
 const Checkout = () => {
-  const state = useSelector((state) => state.addItem);
+  const state = useSelector((state) => state.cart);
   console.log(state);
 
   const [value, setValue] = useState({
@@ -21,7 +21,7 @@ const Checkout = () => {
   const submitHandler = (e) => {
     e.preventDefault();
     console.log(value);
-    alert("Please Check the Console")
+    alert("Please Check the Console");
     setValue({
       firstName: "",
       lastName: "",
@@ -35,13 +35,18 @@ const Checkout = () => {
 
   var total = 0;
   const itemList = (item) => {
-    total += item.price;
+    total += item?.price * item?.qty;
     return (
       <li className='lis-group-item gap-2 d-flex justify-content-between border-bottom mb-2 pb-2'>
         <div>
           <h6 className='my-0'>{item.title}</h6>
+          <span className='text-primary fw-medium'>
+            Qty: {item?.qty}, Price: {item?.price}
+          </span>
         </div>
-        <span className='text-success fw-medium'>${item.price}</span>
+        <span className='text-success fw-medium'>
+          ${(item?.price * item?.qty).toFixed(2)}
+        </span>
       </li>
     );
   };
@@ -54,16 +59,19 @@ const Checkout = () => {
           <div className='col-md-5 col-lg-4 order-md-last'>
             <h4 className='d-flex justify-content-between align-items-center mb-3'>
               <span className='text-dark'>Your Cart</span>
-              <span className='badge bg-warning  rounded-pill'>
-                {state.length}
-              </span>
+              <div>
+                Total
+                <span className='badge bg-warning rounded-pill'>
+                  {state.length}
+                </span>
+              </div>
             </h4>
             <ul className='mb-3 list-group'>
               {state.map(itemList)}
 
-              <li className='d-flex justify-content-between'>
+              <li className='d-flex display-6 justify-content-between'>
                 <span>Total (USD)</span>
-                <strong className='text-danger'>${total}</strong>
+                <strong className='text-danger'>${total.toFixed(2)}</strong>
               </li>
             </ul>
 
@@ -74,7 +82,7 @@ const Checkout = () => {
                   placeholder='Promo Code'
                   className='form-control'
                 />
-                <button className='btn btn-dark' type='submit'>
+                <button title="soon...!" className='btn btn-dark' type='submit'>
                   Redeem
                 </button>
               </div>

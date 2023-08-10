@@ -1,24 +1,19 @@
 import { useDispatch, useSelector } from "react-redux";
-import { delItem } from "../redux/action/index";
 import { NavLink } from "react-router-dom";
+import { increaseQty, decreaseQty, removeFromCart } from "../redux/cartSlice";
 
 const Cart = () => {
-  const state = useSelector((state) => state.addItem);
+  const cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
-
-  const handleClose = (item) => {
-    dispatch(delItem(item));
-  };
-
   const cartItems = (cartItem) => {
     return (
-      <div className='px-4 my-5 rounded-3' key={cartItem.id}>
-        <div className='container bg-dark-subtle py-4'>
+      <div className='px-4 my-5' key={cartItem.id}>
+        <div className='container rounded-3 border shadow-lg py-4'>
           <button
-            onClick={() => handleClose(cartItem)}
             className='btn-close float-end'
-            aria-label='Close'></button>
-          <div className='row justify-content-center'>
+            aria-label='Close'
+            onClick={() => dispatch(removeFromCart(cartItem.id))}></button>
+          <div className='row justify-content-evenly'>
             <div className='col-md-4'>
               <img
                 src={cartItem.image}
@@ -28,8 +23,29 @@ const Cart = () => {
               />
             </div>
             <div className='col-md-4'>
-              <h5>{cartItem.title}</h5>
+              <h4>{cartItem.title}</h4>
               <p className='lead fw-bold'>Price: ${cartItem.price}</p>
+              <p className='lead fw-medium text-black-50'>
+                {cartItem.qty} x {cartItem.price} ={" "}
+                <span className='text-danger'>
+                  ${(cartItem.price * cartItem.qty).toFixed(2)}
+                </span>
+              </p>
+              <button
+                className='btn btn-outline-dark mx-2'
+                onClick={() => dispatch(increaseQty(cartItem))}>
+                +
+              </button>
+              <button
+                className='btn btn-outline-dark mx-2'
+                onClick={() => dispatch(decreaseQty(cartItem))}>
+                -
+              </button>
+              <button
+                className='btn btn-dark mx-2'
+                onClick={() => dispatch(removeFromCart(cartItem.id))}>
+                Remove
+              </button>
             </div>
           </div>
         </div>
@@ -65,56 +81,11 @@ const Cart = () => {
 
   return (
     <>
-      {state.length === 0 && emptyCart()}
-      {state.length !== 0 && state.map(cartItems)}
-      {state.length !== 0 && button()}
+      {cart.length === 0 && emptyCart()}
+      {cart.length !== 0 && cart.map(cartItems)}
+      {cart.length !== 0 && button()}
     </>
   );
 };
 
 export default Cart;
-
-// const Cart = () => {
-//   const state = useSelector((state) => state.handleCart);
-//   console.log(state);
-//   const handleButton = (product) => {
-//     return product.qty + 1
-//   }
-//   return (
-//     <div className='container my-4'>
-//       {state.map((product) => (
-//         <div
-//           key={product.id}
-//           className=' justify-content-center row mb-4 py-4 rounded-2 '
-//           style={{ backgroundColor: "#e0e0e0" }}>
-//           <div className='col-md-4'>
-//             <img
-//               src={product.image}
-//               alt={product.title}
-//               height='200px'
-//               width='180px'
-//             />
-//           </div>
-//           <div className='col-md-4'>
-//             <h3>{product.title}</h3>
-//             <p className='lead fw-bolder'>
-//               {product.qty} X ${product.price} = ${product.qty * product.price}
-//             </p>
-//             <button
-//               className='btn btn-outline-dark me-4'
-//               onClick={() => handleButton(product)}>
-//               <i className='fa fa-minus'></i>
-//             </button>
-//             <button
-//               className='btn btn-outline-dark me-4'
-//               onClick={() => handleButton(product)}>
-//               <i className='fa fa-plus'></i>
-//             </button>
-//           </div>
-//         </div>
-//       ))}
-//     </div>
-//   );
-// };
-
-// export default Cart;
