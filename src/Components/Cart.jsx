@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
-import { increaseQty, decreaseQty, removeFromCart } from "../redux/cartSlice";
+import { increaseQty, decreaseQty, removeFromCart, clearAllCart } from "../redux/cartSlice";
 
 const Cart = () => {
   const cart = useSelector((state) => state.cart);
@@ -68,12 +68,13 @@ const Cart = () => {
   const button = () => {
     return (
       <div className='container'>
-        <div className='row'>
-          <NavLink
-            to='/checkout'
-            className='btn btn-outline-success mb-5 w-25 mx-auto'>
-            Proceed To checkout
+        <div className='row mb-5 mx-5 sm:mx-auto'>
+          <NavLink to='/checkout' className='btn btn-success col-sm-4 mx-auto'>
+            Proceed To Checkout
           </NavLink>
+          <button onClick={() => dispatch(clearAllCart())}  className='btn btn-danger col-sm-4 mx-auto'>
+            Clear all Products
+          </button>
         </div>
       </div>
     );

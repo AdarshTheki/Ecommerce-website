@@ -34,29 +34,29 @@ const Products = () => {
   const ShowProduct = () => {
     return (
       <>
-        <div className='buttons mb-5 pt-4  d-flex justify-content-center'>
+        <div className='buttons mb-5 pt-4 flex-wrap gap-2 d-flex justify-content-center'>
           <button
-            className='btn btn-outline-dark me-2'
+            className='btn btn-outline-dark mb-2'
             onClick={() => setFilter(product)}>
             All
           </button>
           <button
-            className='btn btn-outline-dark me-2'
+            className='btn btn-outline-dark mb-2'
             onClick={() => filterProduct("men's clothing")}>
             Mens Clothing
           </button>
           <button
-            className='btn btn-outline-dark me-2'
+            className='btn btn-outline-dark mb-2'
             onClick={() => filterProduct("women's clothing")}>
             Womans Clothing
           </button>
           <button
-            className='btn btn-outline-dark me-2'
+            className='btn btn-outline-dark mb-2'
             onClick={() => filterProduct("jewelery")}>
             Jewelery
           </button>
           <button
-            className='btn btn-outline-dark me-2'
+            className='btn btn-outline-dark mb-2'
             onClick={() => filterProduct("electronics")}>
             Electronics
           </button>

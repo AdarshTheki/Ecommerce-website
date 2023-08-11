@@ -3,7 +3,7 @@ const Footer = () => {
     <div style={{ backgroundColor: "#313131", color: "#fff" }}>
       <div
         style={{ minHeight: 400 }}
-        className='d-flex container justify-content-evenly gap-5 py-5'>
+        className='d-flex flex-wrap container justify-content-evenly align-items-center gap-5 py-5'>
         <div className='col-md-2 d-flex flex-column align-items-center'>
           <h4 className='text-danger mb-4 my-5'>Layouts</h4>
           <a className='text-decoration-none' href='#'>
