@@ -26,23 +26,23 @@ const Cart = () => {
               <h4>{cartItem.title}</h4>
               <p className='lead fw-bold'>Price: ${cartItem.price}</p>
               <p className='lead fw-medium text-black-50'>
-                {cartItem.qty} x {cartItem.price} ={" "}
+                Qty: {cartItem.qty} x ${cartItem.price} ={" "}
                 <span className='text-danger'>
                   ${(cartItem.price * cartItem.qty).toFixed(2)}
                 </span>
               </p>
               <button
-                className='btn btn-outline-dark mx-2'
+                className='btn col-2 btn-outline-dark mx-2'
                 onClick={() => dispatch(increaseQty(cartItem))}>
                 +
               </button>
               <button
-                className='btn btn-outline-dark mx-2'
+                className='btn col-2 btn-outline-dark mx-2'
                 onClick={() => dispatch(decreaseQty(cartItem))}>
                 -
               </button>
               <button
-                className='btn btn-dark mx-2'
+                className='btn col-4 btn-dark mx-2'
                 onClick={() => dispatch(removeFromCart(cartItem.id))}>
                 Remove
               </button>
@@ -65,14 +65,18 @@ const Cart = () => {
     );
   };
 
-  const button = () => {
+  const Button = () => {
     return (
       <div className='container'>
-        <div className='row mb-5 mx-5 sm:mx-auto'>
-          <NavLink to='/checkout' className='btn btn-success col-sm-4 mx-auto'>
+        <div className='row mb-5 mx-5'>
+          <NavLink
+            to='/checkout'
+            className='btn btn-success col-md-4 col-5  mx-auto'>
             Proceed To Checkout
           </NavLink>
-          <button onClick={() => dispatch(clearAllCart())}  className='btn btn-danger col-sm-4 mx-auto'>
+          <button
+            onClick={() => dispatch(clearAllCart())}
+            className='btn btn-danger col-md-4 col-5 mx-auto'>
             Clear all Products
           </button>
         </div>
@@ -84,7 +88,7 @@ const Cart = () => {
     <>
       {cart.length === 0 && emptyCart()}
       {cart.length !== 0 && cart.map(cartItems)}
-      {cart.length !== 0 && button()}
+      {cart.length !== 0 && Button()}
     </>
   );
 };

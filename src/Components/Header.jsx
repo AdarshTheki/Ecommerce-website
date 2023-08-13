@@ -40,14 +40,14 @@ const Header = () => {
   };
 
   return (
-    <div className='NavBar'>
-      <nav className='navbar navbar-expand-lg bg-body-tertiary bg-white py-3 shadow-sm '>
+    <div className='NavBar position-sticky top-0 start-0 z-3'>
+      <nav className='navbar navbar-expand-lg bg-body-tertiary bg-white py-3 shadow'>
         <div className='container'>
-          <NavLink className='navbar-brand mx-auto fw-bold fs-5' to='/products'>
-            Collections
+          <NavLink className='navbar-brand mx-auto text-uppercase fw-bold fs-5' to='/products'>
+            Gallery
           </NavLink>
           <div className='collapse navbar-collapse' id='navbarSupportedContent'>
-            <NavList/>
+            <NavList />
           </div>
           <div className='buttons mx-auto'>
             {isAuthentication ? (

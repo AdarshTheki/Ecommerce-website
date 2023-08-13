@@ -24,7 +24,7 @@ const App = () => {
 
   const isAuthentication = useSelector((state) => state.user.isAuthentication);
   return (
-    <>
+    <div className="position-relative">
       <Header />
       <Routes>
         <Route exact path='/' element={<Home />} />
@@ -40,7 +40,7 @@ const App = () => {
         <Route path='*' element={<NotFound />} />
       </Routes>
       <Footer />
-    </>
+    </div>
   );
 };
 
