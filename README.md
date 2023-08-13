@@ -1,8 +1,8 @@
 # E-Commerce Website with React
 
-![GitHub last commit](https://img.shields.io/github/last-commit/YourUsername/YourECommerceRepo)
-![GitHub repo size](https://img.shields.io/github/repo-size/YourUsername/YourECommerceRepo)
-![GitHub](https://img.shields.io/github/license/YourUsername/YourECommerceRepo)
+![GitHub last commit](https://img.shields.io/github/last-commit/AdarshTheki/Ecommerce-website)
+![GitHub repo size](https://img.shields.io/github/repo-size/AdarshTheki/Ecommerce-website)
+![GitHub](https://img.shields.io/github/license/AdarshTheki/Ecommerce-website)
 
 This repository contains the source code for an E-Commerce website built using React. The website offers a user-friendly interface for customers to browse products, add them to the cart, and complete their purchases securely.
 
