@@ -1,40 +1,19 @@
 import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
-import Skeleton from "react-loading-skeleton";
 import { useSelector } from "react-redux";
+import ProductLoading from '../Components/ProductLoading'
 
 const Products = () => {
   const product = useSelector((state) => state.products);
   const [filter, setFilter] = useState([]);
   const [isLoading, setLoading] = useState(true);
+  
   useEffect(() => {
     setFilter(product);
     setTimeout(() => {
       setLoading(false);
     },1000)
   }, [product]);
-
-  const Loading = () => {
-    return (
-      <>
-        <div className='d-flex flex-wrap gap-2 justify-content-center my-5'>
-          <Skeleton width={80} height={50} />
-          <Skeleton width={120} height={50} />
-          <Skeleton width={120} height={50} />
-          <Skeleton width={120} height={50} />
-          <Skeleton width={120} height={50} />
-        </div>
-        <div className='container d-flex mb-5 justify-content-center gap-4 flex-wrap'>
-          <Skeleton height={300} width={280} />
-          <Skeleton height={300} width={280} />
-          <Skeleton height={300} width={280} />
-          <Skeleton height={300} width={280} />
-          <Skeleton height={300} width={280} />
-          <Skeleton height={300} width={280} />
-        </div>
-      </>
-    );
-  };
 
   const filterProduct = (cat) => {
     const listProduct = product.filter((e) => e.category === cat);
@@ -95,13 +74,7 @@ const Products = () => {
   const ShowProduct = () => {
     return (
       <div style={{ width: "100%", overflow: "hidden" }}>
-        <div className='row'>
-          <div className='col-12 border-dark'>
-            <h1 className='display-6 pt-4 fw-bold text-center text-uppercase'>
-              Latest Products
-            </h1>
-          </div>
-        </div>
+        <h2 className="text-center m-4 fs-2">Latest Products</h2>
         <hr />
         <div className='container'>
           <div className='row justify-content-center '>
@@ -115,7 +88,7 @@ const Products = () => {
     );
   };
 
-  return <>{isLoading ? <Loading /> : <ShowProduct />}</>;
+  return <>{isLoading ? <ProductLoading /> : <ShowProduct />}</>;
 };
 
 export default Products;

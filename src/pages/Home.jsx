@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import bg from "../../assets/bg.avif";
+import bg from "../assets/bg.avif";
 
 const Home = () => {
   return (

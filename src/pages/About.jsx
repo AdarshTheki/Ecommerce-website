@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom"
-import about from "../../assets/about.png"
+import about from "../assets/about.png"
 
 const About = () => {
   return (

@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import Skeleton from "react-loading-skeleton";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useParams } from "react-router-dom";
 import { addToCart } from "../redux/cartSlice";
+import DetailLoading from '../Components/DetailLoading'
 
 const ProductDetail = () => {
   const dispatch = useDispatch();
@@ -10,7 +10,6 @@ const ProductDetail = () => {
   const { id } = useParams();
   const [product, setProduct] = useState([]);
   const [loading, setLoading] = useState(false);
-  // console.log(id);
 
   useEffect(() => {
     const getProducts = async () => {
@@ -23,24 +22,6 @@ const ProductDetail = () => {
 
   const filterId = product.filter((e) => e.id.toString() === id.toString());
   console.log(filterId);
-
-  const Loading = () => {
-    return (
-      <>
-        <div className='col-md-6'>
-          <Skeleton height={400} />
-        </div>
-        <div className='col-md-6' style={{ lineHeight: 2 }}>
-          <Skeleton height={50} width={300} />
-          <Skeleton height={75} />
-          <Skeleton height={25} width={150} />
-          <Skeleton height={50} />
-          <Skeleton height={150} />
-          <Skeleton height={40} width={100} />
-        </div>
-      </>
-    );
-  };
 
   const RelatedProducts = ({ category }) => {
     const productRelated = product.filter((e) => e.category === category);
@@ -117,7 +98,7 @@ const ProductDetail = () => {
   return (
     <>
       <div className='container py-5'>
-        {loading ? <Loading /> : <ShowProduct />}
+        {loading ? <DetailLoading/>  : <ShowProduct />}
       </div>
     </>
   );
