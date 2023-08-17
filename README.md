@@ -7,8 +7,11 @@
 This repository contains the source code for an E-Commerce website built using React. The website offers a user-friendly interface for customers to browse products, add them to the cart, and complete their purchases securely.
 
 ![Screenshot1](./src/assets/Screenshot1.png)
+
 ![Screenshot2](./src/assets/Screenshot2.png)
+
 ![Screenshot3](./src/assets/Screenshot3.png)
+
 ![Screenshot4](./src/assets/Screenshot4.png)
 
 ## Features
@@ -21,6 +24,14 @@ This repository contains the source code for an E-Commerce website built using R
 - **Secure Checkout**: Provide a secure checkout process for customers to complete their purchases.
 - **Order History**: Users can view their order history and track the status of their orders.
 - **Admin Dashboard**: Administrators can manage products, categories, and orders using a dedicated dashboard.
+
+## Technologies Used
+
+- React for building the user interface.
+- React Router for managing routes and navigation.
+- Redux for state management.
+- Axios for making HTTP requests.
+- @reduxjs/toolkit install and used with react-redux.
 
 ## Getting Started
 
@@ -40,17 +51,9 @@ This repository contains the source code for an E-Commerce website built using R
 3. Open the website in your browser:
 
 ```sh
-  npm start
-  http://localhost:3000
+  npm run dev
+  http://localhost:5173
 ```
-
-## Technologies Used
-
-- React for building the user interface.
-- React Router for managing routes and navigation.
-- Redux for state management.
-- Axios for making HTTP requests.
-- @reduxjs/toolkit install and used with react-redux.
 
 ## Contributing
 
@@ -65,8 +68,9 @@ Contributions are welcome! If you'd like to contribute to this project, please f
 
 ## License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+This project is licensed under the MIT License - see the **[LICENSE](./LICENSE)** file for details.
 
+## Descriptions
 This README file outlines the key features, getting started instructions, technologies used, and how to contribute to the project. Make sure to include your own screenshots, links, and detailed descriptions that accurately represent your eCommerce website built with React.
 
 Happy Coding...😍

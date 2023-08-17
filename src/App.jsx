@@ -1,19 +1,20 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Routes, Route } from "react-router-dom";
+import './App.css'
 
-import Home from "./Components/Common/Home";
-import About from "./Components/Common/About";
-import Contact from "./Components/Common/Contact";
-import SignUp from "./Components/Common/SignUp";
-import Footer from "./Components/Common/Footer";
-import NotFound from "./Components/Common/NotFound";
+import Home from "./pages/Home";
+import About from "./pages/About";
+import Contact from "./pages/Contact";
+import SignUp from "./pages/SignUp";
+import Footer from "./Components/Footer";
+import NotFound from "./pages/NotFound";
 
 import Header from "./Components/Header";
-import Products from "./Components/Products";
-import ProductDetail from "./Components/ProductDetail";
-import Cart from "./Components/Cart";
-import Checkout from "./Components/Checkout";
+import Products from "./pages/Products";
+import ProductDetail from "./pages/ProductDetail";
+import Cart from "./pages/Cart";
+import Checkout from "./pages/Checkout";
 import { fetchProducts } from "./redux/productSlice";
 
 const App = () => {
@@ -24,7 +25,7 @@ const App = () => {
 
   const isAuthentication = useSelector((state) => state.user.isAuthentication);
   return (
-    <div className="position-relative">
+    <div className='position-relative'>
       <Header />
       <Routes>
         <Route exact path='/' element={<Home />} />
