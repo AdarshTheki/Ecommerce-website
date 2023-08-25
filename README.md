@@ -3,6 +3,7 @@
 ![GitHub last commit](https://img.shields.io/github/last-commit/AdarshTheki/Ecommerce-website)
 ![GitHub repo size](https://img.shields.io/github/repo-size/AdarshTheki/Ecommerce-website)
 ![GitHub](https://img.shields.io/github/license/AdarshTheki/Ecommerce-website)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/d24b8d52-aca8-41e2-9812-640e8a429f2a/deploy-status)](https://app.netlify.com/sites/adarshtheki-ecommerce-website/deploys)
 
 This repository contains the source code for an E-Commerce website built using React. The website offers a user-friendly interface for customers to browse products, add them to the cart, and complete their purchases securely.
 
@@ -24,6 +25,7 @@ This repository contains the source code for an E-Commerce website built using R
 - **Secure Checkout**: Provide a secure checkout process for customers to complete their purchases.
 - **Order History**: Users can view their order history and track the status of their orders.
 - **Admin Dashboard**: Administrators can manage products, categories, and orders using a dedicated dashboard.
+- **More Feature Coming soon...**
 
 ## Technologies Used
 

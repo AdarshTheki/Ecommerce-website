@@ -1,4 +1,4 @@
-import contact from "../assets/contact.png";
+import contact from "../assets/message.svg";
 
 const Contact = () => {
   return (
@@ -50,7 +50,7 @@ const Contact = () => {
                 <textarea
                   className='form-control'
                   id='exampleFormControlTextarea1'
-                  rows='5'></textarea>
+                  rows='2'></textarea>
               </div>
               <button type='submit' className='btn btn-outline-dark'>
                 Send Message

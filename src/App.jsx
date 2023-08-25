@@ -1,20 +1,11 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Routes, Route } from "react-router-dom";
-import './App.css'
+import "./App.css";
 
-import Home from "./pages/Home";
-import About from "./pages/About";
-import Contact from "./pages/Contact";
-import SignUp from "./pages/SignUp";
-import Footer from "./Components/Footer";
-import NotFound from "./pages/NotFound";
+import { Data } from "./Files";
+const { Footer, Header, Home, About, Contact, Products, ProductDetail, Cart, Checkout, NotFound, SignUp } = Data;
 
-import Header from "./Components/Header";
-import Products from "./pages/Products";
-import ProductDetail from "./pages/ProductDetail";
-import Cart from "./pages/Cart";
-import Checkout from "./pages/Checkout";
 import { fetchProducts } from "./redux/productSlice";
 
 const App = () => {
