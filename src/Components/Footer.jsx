@@ -1,55 +1,42 @@
+import React from 'react';
+
 const Footer = () => {
   return (
-    <div style={{ backgroundColor: "#313131", color: "#fff" }}>
+    <div style={{ backgroundColor: '#313131', color: '#fff' }}>
       <div
         style={{ minHeight: 400 }}
-        className='d-flex flex-wrap container justify-content-evenly align-items-center gap-5 py-5'>
-        <div className='col-md-2 d-flex flex-column align-items-center'>
+        className='d-flex flex-wrap container justify-content-evenly align-items-start gap-5 py-5'>
+        <div className='col-md-2 d-flex flex-column align-items-start lead fw-bolder'>
           <h4 className='text-danger mb-4 my-5'>Layouts</h4>
-          <a className='text-decoration-none' href='#'>
-            Landing Page 1
+          <a className='text-decoration-none' href='/'>
+            Home
           </a>
-          <a className='text-decoration-none' href='#'>
-            Landing Page 2
+          <a className='text-decoration-none' href='/products'>
+            Products
           </a>
-          <a className='text-decoration-none' href='#'>
-            Blog
+          <a className='text-decoration-none' href='/about'>
+            About
           </a>
-          <a className='text-decoration-none' href='#'>
-            Blog Article
-          </a>
-          <a className='text-decoration-none' href='#'>
-            Pricing
-          </a>
-          <a className='text-decoration-none' href='#'>
-            About Us
-          </a>
-          <a className='text-decoration-none' href='#'>
+          <a className='text-decoration-none' href='/contact'>
             Contact
           </a>
+          <a className='text-decoration-none' href='/cart'>
+            Cart
+          </a>
         </div>
-        <div className='col-md-2 d-flex flex-column align-items-center'>
+        <div className='col-md-2 d-flex flex-column align-items-start lead fw-bolder'>
           <h4 className='mb-4 my-5 text-danger'>Account Pages</h4>
-          <a className='text-decoration-none' href='#'>
+          <a className='text-decoration-none' href='/login'>
             Login
           </a>
-          <a className='text-decoration-none' href='#'>
-            LogIn
-          </a>
-          <a className='text-decoration-none' href='#'>
-            Sign-up
-          </a>
-          <a className='text-decoration-none' href='#'>
-            Sign-up validation
-          </a>
-          <a className='text-decoration-none' href='#'>
-            Reset Password
+          <a className='text-decoration-none' href='/signup'>
+            SignUp
           </a>
         </div>
-        <div className='col-md-2 d-flex flex-column align-items-center'>
+        <div className='col-md-2 d-flex flex-column align-items-start lead fw-bolder'>
           <h4 className='mb-4 my-5 text-danger'>Mics</h4>
-          <a className=' text-decoration-none' href='#'>
-            Boxes
+          <a className=' text-decoration-none' href='blog'>
+            Blogs
           </a>
           <a className=' text-decoration-none' href='#'>
             404 Error
@@ -65,7 +52,7 @@ const Footer = () => {
           </a>
         </div>
       </div>
-        <p className="text-center m-0 pb-2">© Your Company • Terms • Privacy Policy</p>
+      <p className='text-center m-0 pb-2'>© Your Company • Terms • Privacy Policy</p>
     </div>
   );
 };

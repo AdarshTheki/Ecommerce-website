@@ -1,19 +1,20 @@
-import { useDispatch, useSelector } from "react-redux";
-import { NavLink } from "react-router-dom";
-import { logOut } from "../redux/userSlice";
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { NavLink, useNavigate } from 'react-router-dom';
+import { logOut } from '../redux/userSlice';
+import Buttons from '../utils/Buttons';
 
 const Header = () => {
   const dispatch = useDispatch();
+  const Navigate = useNavigate();
   const cart = useSelector((state) => state.cart);
   const users = useSelector((state) => state.user);
   const { user, isAuthentication } = users;
 
   const User = () => {
     return (
-      <div className='user-dropdown bg-dark px-4 py-2 rounded'>
-        <button className='dropdown-btn'>
-          Hello, {user.email.slice(0, 10)}... ▼
-        </button>
+      <div className='user-dropdown bg-dark rounded'>
+        <Buttons className='dropdown-btn text-white'>Hello, {user.email.slice(0, 10)}... ▼</Buttons>
         <div className='dropdown-content fw-bolder'>
           <p>
             Email: <span className='fw-medium'>{user?.email}</span>
@@ -22,18 +23,13 @@ const Header = () => {
             City: <span className='fw-medium'>{user?.city}</span>
           </p>
           <p>
-            Organization:{" "}
-            <span className='fw-medium'>{user?.organization}</span>
+            Organization: <span className='fw-medium'>{user?.organization}</span>
           </p>
           {/* <p>Age: {user.age}</p> */}
-          {user.image && (
-            <img src={URL.createObjectURL(user.image)} alt='User' />
-          )}
-          <button
-            className='btn-outline-dark btn'
-            onClick={() => dispatch(logOut())}>
+          {user.image && <img src={URL.createObjectURL(user.image)} alt='User' />}
+          <Buttons className='btn-outline-danger' onClick={() => dispatch(logOut())}>
             Logout
-          </button>
+          </Buttons>
         </div>
       </div>
     );
@@ -53,9 +49,11 @@ const Header = () => {
             {isAuthentication ? (
               <User />
             ) : (
-              <NavLink to='/products' className='fw-medium text-danger btn'>
-                <i className='fa fa-user-plus me-1'></i>User
-              </NavLink>
+              <Buttons
+                onClick={() => Navigate('/products')}
+                className='fw-medium btn-outline-success'>
+                Add User
+              </Buttons>
             )}
             <NavLink to='cart' className='btn btn-outline-dark mx-2'>
               <i className='fa fa-shopping-cart me-1'></i>Cart ({cart.length})
@@ -68,7 +66,6 @@ const Header = () => {
 };
 
 export default Header;
-
 
 const NavList = () => {
   return (
@@ -95,4 +92,4 @@ const NavList = () => {
       </li>
     </ul>
   );
-}
+};
