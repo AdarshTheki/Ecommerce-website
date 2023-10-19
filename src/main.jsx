@@ -1,22 +1,19 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-import { BrowserRouter } from "react-router-dom";
-import App from "./App.jsx";
-import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
-import "../node_modules/font-awesome/css/font-awesome.min.css";
-import "react-loading-skeleton/dist/skeleton.css";
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import { BrowserRouter } from 'react-router-dom';
+import App from './App.jsx';
+import '../node_modules/bootstrap/dist/css/bootstrap.min.css';
+import 'react-loading-skeleton/dist/skeleton.css';
 
-import { Provider } from "react-redux";
-import { store } from "./redux/store.js";
+import { Provider } from 'react-redux';
+import { store } from './redux/store.js';
 
-ReactDOM.createRoot(document.getElementById("root")).render(
+ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <React.Fragment>
+    <Provider store={store}>
       <BrowserRouter>
-        <Provider store={store}>
-          <App />
-        </Provider>
+        <App />
       </BrowserRouter>
-    </React.Fragment>
+    </Provider>
   </React.StrictMode>
 );
