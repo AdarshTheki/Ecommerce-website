@@ -4,7 +4,7 @@ const Inputs = forwardRef(function Inputs({ label, type = 'text', className = ''
   const id = useId();
 
   return (
-    <div className='form-floating mb-3 shadow card'>
+    <div className='form-floating mb-3 shadow'>
       <input
         type={type}
         id={id}
