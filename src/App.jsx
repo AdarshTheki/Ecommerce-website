@@ -1,29 +1,34 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Routes, Route } from 'react-router-dom';
-import './App.css';
+import { Outlet } from 'react-router-dom';
 
-import {
-  Footer,
-  Header,
-  Home,
-  About,
-  Contact,
-  Products,
-  ProductDetail,
-  Cart,
-  Checkout,
-  NotFound,
-  SignUp,
-} from './index';
-import { fetchProducts } from './redux/productSlice';
 import { getFilterProducts, getProduct, getSortingProducts } from './redux/filterSlice';
+import { fetchProducts } from './redux/productSlice';
+import { AuthServices } from './appwrite/AuthServices';
+import { logIn, logOut } from './redux/userSlice';
+import { Footer, Header } from './index';
+import './App.css';
 
 const App = () => {
   const dispatch = useDispatch();
-  const isAuthentication = useSelector((state) => state.user.isAuthentication);
   const state = useSelector((state) => state.filter);
   const products = useSelector((state) => state.products);
+
+  const [loading, setLoading] = React.useState(true);
+
+  useEffect(() => {
+    AuthServices.getCurrentUser()
+      .then((res) => {
+        if (res) {
+          console.log(res);
+          dispatch(logIn(res));
+        } else {
+          dispatch(logOut());
+        }
+      })
+      .catch((err) => console.log(err.message))
+      .finally(() => setLoading(false));
+  }, []);
 
   useEffect(() => {
     dispatch(fetchProducts());
@@ -39,21 +44,17 @@ const App = () => {
   }, [state.sorting_value, products, state.filters]);
 
   return (
-    <div className='position-relative'>
-      <Header />
-      <Routes>
-        <Route exact path='/' element={<Home />} />
-        <Route path='/products' element={isAuthentication ? <Products /> : <SignUp />} />
-        <Route path='/products' element={isAuthentication ? <Products /> : <SignUp />} />
-        <Route path='/product/:id' element={<ProductDetail />} />
-        <Route path='/cart' element={<Cart />} />
-        <Route path='/checkout' element={<Checkout />} />
-        <Route path='/about' element={<About />} />
-        <Route path='/contact' element={<Contact />} />
-        <Route path='*' element={<NotFound />} />
-      </Routes>
-      <Footer />
-    </div>
+    <>
+      {!loading ? (
+        <div className='position-relative'>
+          <Header />
+          <Outlet />
+          <Footer />
+        </div>
+      ) : (
+        <h2>Loading....</h2>
+      )}
+    </>
   );
 };
 

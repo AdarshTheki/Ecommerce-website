@@ -1,35 +1,34 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { NavLink, useNavigate } from 'react-router-dom';
-import { logOut } from '../redux/userSlice';
+
 import Buttons from '../utils/Buttons';
+import LogoutBtn from '../Components/LogoutBtn';
+import { FaShoppingCart } from 'react-icons/fa';
 
 const Header = () => {
-  const dispatch = useDispatch();
   const Navigate = useNavigate();
   const cart = useSelector((state) => state.cart);
   const users = useSelector((state) => state.user);
-  const { user, isAuthentication } = users;
+  const { status, userData } = users;
 
   const User = () => {
     return (
       <div className='user-dropdown bg-dark rounded'>
-        <Buttons className='dropdown-btn text-white'>Hello, {user.email.slice(0, 10)}... ▼</Buttons>
+        <Buttons className='dropdown-btn text-white'>
+          Hello, {userData?.name.slice(0, 10)}... ▼
+        </Buttons>
         <div className='dropdown-content fw-bolder'>
           <p>
-            Email: <span className='fw-medium'>{user?.email}</span>
+            Name: <span className='fw-medium'>{userData?.name}</span>
           </p>
           <p>
-            City: <span className='fw-medium'>{user?.city}</span>
+            Email: <span className='fw-medium'>{userData?.email}</span>
           </p>
-          <p>
-            Organization: <span className='fw-medium'>{user?.organization}</span>
-          </p>
-          {/* <p>Age: {user.age}</p> */}
-          {user.image && <img src={URL.createObjectURL(user.image)} alt='User' />}
-          <Buttons className='btn-outline-danger' onClick={() => dispatch(logOut())}>
-            Logout
+          <Buttons className='btn btn-info mx-2' onClick={() => Navigate('/profile')}>
+            Profile
           </Buttons>
+          <LogoutBtn>Logout</LogoutBtn>
         </div>
       </div>
     );
@@ -46,7 +45,7 @@ const Header = () => {
             <NavList />
           </div>
           <div className='buttons mx-auto'>
-            {isAuthentication ? (
+            {status ? (
               <User />
             ) : (
               <Buttons
@@ -55,8 +54,9 @@ const Header = () => {
                 Add User
               </Buttons>
             )}
-            <NavLink to='cart' className='btn btn-outline-dark mx-2'>
-              <i className='fa fa-shopping-cart me-1'></i>Cart ({cart.length})
+            <NavLink to='cart' className='btn btn-outline-dark mx-2 position-relative'>
+              <FaShoppingCart /> Cart{' '}
+              <span className='position-absolute top-0 badge bg-dark'>{cart.length}</span>
             </NavLink>
           </div>
         </div>
